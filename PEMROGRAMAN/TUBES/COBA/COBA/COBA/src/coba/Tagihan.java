@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Raffly Dwi Putra
  */
 public class Tagihan extends javax.swing.JFrame {
-    Info kamar = new Info();
+    Info kamar = new Info(); 
     BufferedReader br;
     BufferedWriter bw;
     DefaultTableModel tabel1;//untuk jTable1
