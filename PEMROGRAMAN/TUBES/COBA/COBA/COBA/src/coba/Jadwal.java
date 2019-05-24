@@ -4,19 +4,97 @@
  * and open the template in the editor.
  */
 package coba;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ACER
  */
 public class Jadwal extends javax.swing.JFrame {
+Info kamar = new Info();
+    BufferedReader br;
+    BufferedWriter bw;
+    DefaultTableModel tabel1;//untuk jTable1
 
+    //String[][] dataStok;
+    String[] data;
+    String alamat;
+    File file;
+    int a = 0, b = 0;
+   
+
+    public Jadwal() {
+        initComponents();
+        jComboBox1.setVisible(false);
+        tabel1 = (DefaultTableModel) tjad.getModel();
+        loadData();
+
+       
+
+    }
+
+    public void loadData() {
+        tabel1.getDataVector().removeAllElements();
+        String path = "src/coba/jadkul.txt";
+        File file = new File(path);
+    
+    try {
+            br = new BufferedReader(new FileReader(file));
+            Object[] dataBaris = br.lines().toArray();
+            for (int i = 0; i < dataBaris.length; i++) {
+                String baris = dataBaris[i].toString();
+                String[] data = baris.split("/");
+                tabel1.addRow(data);
+
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    public void Update() {
+        alamat = "src/coba/jadkul.txt";
+        file = new File(alamat);
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i < tjad.getRowCount(); i++) {
+                for (int j = 0; j < tjad.getColumnCount(); j++) {
+                    if (j > 0) {
+                        bw.write("/");
+                    }
+                    bw.write(tjad.getValueAt(i, j).toString());
+                }
+                bw.newLine();
+            }
+            bw.close();
+        } catch (Exception e) {
+        }
+
+    }
+
+    public void save() {
+        String path = "src/coba/jadkul.txt";
+        File file = new File(path);
+        try {
+            bw = new BufferedWriter(new FileWriter(file));
+            Object[] dataBaris = br.lines().toArray();
+            for (int i = 0; i < dataBaris.length; i++) {
+                String baris = dataBaris[i].toString();
+                String[] data = baris.split("/");
+                tabel1.addRow(data);
+            }
+        } catch (Exception e) {
+        }
+    }
     /**
      * Creates new form Jadwal
      */
-    public Jadwal() {
-        initComponents();
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,10 +110,11 @@ public class Jadwal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tjad = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        bbut = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -54,7 +133,7 @@ public class Jadwal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(473, 473, 473)
                 .addComponent(jLabel1)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,20 +145,17 @@ public class Jadwal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tjad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Senin", "Selasa", "Rabu", "Kamis", "Jum'at"
+                "Nama", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(jComboBox1));
-        }
+        jScrollPane1.setViewportView(tjad);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -101,8 +177,25 @@ public class Jadwal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 102, 255));
 
         jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        bbut.setText("Back");
+        bbut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,7 +206,9 @@ public class Jadwal extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bbut, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +216,8 @@ public class Jadwal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(bbut))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,7 +225,7 @@ public class Jadwal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1093, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -147,6 +243,33 @@ public class Jadwal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbutActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+        new Mainframe().setVisible(true);
+    }//GEN-LAST:event_bbutActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Update();
+        JOptionPane.showMessageDialog(null, "Data berhasil diupdate");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+            DefaultTableModel model = (DefaultTableModel) tjad.getModel();
+            JOptionPane.showConfirmDialog(null, "Anda yakin ingin menghapus?");
+        try {
+            int SelectedRowIndex = tjad.getSelectedRow();
+            model.removeRow(SelectedRowIndex);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+
+        Update();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +307,7 @@ public class Jadwal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bbut;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -192,6 +316,6 @@ public class Jadwal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tjad;
     // End of variables declaration//GEN-END:variables
 }

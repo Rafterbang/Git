@@ -1,0 +1,12 @@
+Januari/500000/500000/Lunas
+Februari/750000/500000/Belum Lunas
+Maret/500000/500000/Lunas
+April/500000/500000/Lunas
+Mei/750000/500000/Belum Lunas
+Juni/500000/500000/Lunas
+Juli/500000/500000/Lunas
+Agustus/750000/500000/Belum Lunas
+September/500000/500000/Lunas
+Oktaber/500000/500000/Lunas
+November/750000/500000/Belum Lunas
+Desember/500000/500000/Lunas
