@@ -383,24 +383,15 @@ public class Mainframe extends javax.swing.JFrame {
 
         tabel1.addRow(data);
         Update();
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jComboBox1.setSelectedItem("tgl");
-        jComboBox2.setSelectedItem("bln");
-        jComboBox3.setSelectedItem("thn");
-        jComboBox4.setSelectedItem("Pilih varian kamar");
-
+        operation opr = new operation(this);
+        opr.kosong();
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jComboBox1.setSelectedItem("tgl");
-        jComboBox2.setSelectedItem("bln");
-        jComboBox3.setSelectedItem("thn");
-        jComboBox4.setSelectedItem("Pilih varian kamar");
+        operation opr = new operation(this);
+        opr.kosong2();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
@@ -421,12 +412,8 @@ public class Mainframe extends javax.swing.JFrame {
         tab1.setValueAt(data[2], baris, 2);
         tab1.setValueAt(data[3], baris, 3);
 
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jComboBox1.setSelectedItem("tgl");
-        jComboBox2.setSelectedItem("bln");
-        jComboBox3.setSelectedItem("thn");
-        jComboBox4.setSelectedItem("Pilih varian kamar");
+        operation opr = new operation(this);
+        opr.kosong3();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -440,12 +427,8 @@ public class Mainframe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
 
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jComboBox1.setSelectedItem("tgl");
-        jComboBox2.setSelectedItem("bln");
-        jComboBox3.setSelectedItem("thn");
-        jComboBox4.setSelectedItem("Pilih varian kamar");
+        operation opr = new operation(this);
+        opr.kosong4();
 
         Update();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -468,8 +451,8 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        kamar.setVisible(true);
-        kamar.setLocationRelativeTo(null);
+        operation opr = new operation(this);
+        opr.kosong5();
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -546,16 +529,16 @@ public class Mainframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
+    public volatile javax.swing.JButton jButton2;
+    public volatile javax.swing.JButton jButton3;
+    public volatile javax.swing.JButton jButton4;
+    public volatile javax.swing.JButton jButton5;
+    public volatile javax.swing.JButton jButton6;
+    public volatile javax.swing.JComboBox<String> jComboBox1;
+    public volatile javax.swing.JComboBox<String> jComboBox2;
+    public volatile javax.swing.JComboBox<String> jComboBox3;
+    public volatile javax.swing.JComboBox<String> jComboBox4;
+    public volatile javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -567,9 +550,9 @@ public class Mainframe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    public volatile javax.swing.JTextField jTextField1;
+    public volatile javax.swing.JTextField jTextField2;
+    public volatile javax.swing.JTextField jTextField3;
     private javax.swing.JTable tab1;
     // End of variables declaration//GEN-END:variables
 

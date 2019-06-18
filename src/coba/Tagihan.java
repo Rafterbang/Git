@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Raffly Dwi Putra
  */
 public class Tagihan extends javax.swing.JFrame {
-    int jml,tes; 
+    int jml; 
     BufferedReader br;
     BufferedWriter bw;
     DefaultTableModel tabel1;//untuk jTable1
@@ -346,11 +346,20 @@ public class Tagihan extends javax.swing.JFrame {
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
         // TODO add your handling code here:
-    for (int i = 0;i<tabel2.getRowCount();i++){
-        int jumlah = Integer.parseInt(tabel2.getValueAt(i, 1).toString());
-        tJumlah+=jumlah;
-    }  
-    pembayaran2.setText(""+tJumlah);
+        int baris = tagtab2.getSelectedRow(), jumlah=0;
+        for (int i = 0;i<tabel2.getRowCount();i++){
+            if(tabel2.getValueAt(baris, i).toString().equals("Belum Lunas")){
+                jumlah=tot+500000;
+            }
+        pembayaran2.setText(""+jumlah);
+        }
+//    for (int i = 0;i<tabel2.getRowCount();i++){
+//        int jumlah = Integer.parseInt(tabel2.getValueAt(i, 1).toString());
+//        tJumlah+=jumlah;
+//    }  
+//    pembayaran2.setText(""+tJumlah);
+//    
+
     }//GEN-LAST:event_totalActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
