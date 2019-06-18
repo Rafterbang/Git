@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Raffly Dwi Putra
  */
 public class Tagihan extends javax.swing.JFrame {
-    int jml; 
+    int jml,tes; 
     BufferedReader br;
     BufferedWriter bw;
     DefaultTableModel tabel1;//untuk jTable1
