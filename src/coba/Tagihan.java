@@ -346,16 +346,18 @@ public class Tagihan extends javax.swing.JFrame {
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
         // TODO add your handling code here:
-        int baris = tagtab2.getSelectedRow(), jumlah=0;
-        for (int i = 0;i<tabel2.getRowCount();i++){
+           int baris = tagtab2.getSelectedRow(), biaya=500000;
+          int belum =0;
+          for (int i = 0;i<tagtab2.getColumnCount();i++){
             if(tabel2.getValueAt(baris, i).toString().equals("Belum Lunas")){
-                jumlah=tot+500000;
+                belum++;
             }
-        pembayaran2.setText(""+jumlah);
+        pembayaran2.setText(""+biaya*belum);
+              
         }
 //    for (int i = 0;i<tabel2.getRowCount();i++){
-//        int jumlah = Integer.parseInt(tabel2.getValueAt(i, 1).toString());
-//        tJumlah+=jumlah;
+//        int biaya = Integer.parseInt(tabel2.getValueAt(i, 1).toString());
+//        tJumlah+=biaya;
 //    }  
 //    pembayaran2.setText(""+tJumlah);
 //    
@@ -385,12 +387,13 @@ public class Tagihan extends javax.swing.JFrame {
 
     private void tot2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tot2ActionPerformed
         // TODO add your handling code here:
-        int baris = tagtab.getSelectedRow(), jumlah=0;
-        for (int i = 0;i<tabel2.getRowCount();i++){
-            if(tabel2.getValueAt(baris, i).toString().equals("Belum Lunas")){
-                jumlah=tot+500000;
+        int baris = tagtab.getSelectedRow(), biaya=500000;
+        int belum =0;
+        for (int i = 0;i<12;i++){
+            if(tabel1.getValueAt(baris, i).toString().equals("Belum Lunas")){
+                belum++;
             }
-        pembayaran1.setText(""+jumlah);
+        pembayaran1.setText(""+biaya*belum);
     }//GEN-LAST:event_tot2ActionPerformed
    
     }
